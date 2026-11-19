@@ -1,0 +1,33 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @param {number} target
+     * @return {number[]}
+     */
+    // twoSum(nums: number[], target: number): number[] {
+    //     for(let i = 0; i < nums.length; i++){
+    //         for(let j = i+1; j < nums.length - 1; j++){
+    //             if(nums[i] + nums[j] === target){
+    //                 return [i, j];
+    //             }
+    //         }
+    //     }
+    // }
+    
+    twoSum(nums: number[], target: number): number[] {
+        const map = new Map<number, number>();
+        
+        for (let i = 0; i < nums.length; i++){
+            map.set(nums[i], i);            
+        }
+
+        for (let i = 0; i < nums.length; i++){
+            let diff = target - nums[i];
+            if(map.has(diff) && (map.get(diff) !== i)){
+                return [i, map.get(diff)];
+            }
+        }
+    }
+}
+
+// [3,4,5,6] 10
